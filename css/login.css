@@ -1,0 +1,61 @@
+/* Login Page Specific Styles */
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--grey-100);
+}
+
+.login-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: var(--spacing-xl);
+    animation: fadeIn 0.5s ease;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.login-header h1 {
+    font-size: var(--text-xxl);
+    color: var(--primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.login-header p {
+    color: var(--grey-700);
+}
+
+.login-form {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.login-help {
+    margin-top: var(--spacing-lg);
+    font-size: var(--text-sm);
+    color: var(--grey-600);
+}
+
+.login-help p {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+    .login-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .login-header h1 {
+        font-size: var(--text-xl);
+    }
+}

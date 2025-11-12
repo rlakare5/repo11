@@ -1,0 +1,275 @@
+
+/* Creative Visual Effects */
+
+/* Glitch effect for headers */
+.glitch {
+    position: relative;
+    animation: glitch 2s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: cyan;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: red;
+    z-index: -2;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(1px, -1px); }
+    40% { transform: translate(1px, 1px); }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(-1px, 1px); }
+}
+
+/* Neon glow effect */
+.neon {
+    color: #fff;
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor,
+        0 0 20px var(--primary),
+        0 0 35px var(--primary),
+        0 0 40px var(--primary);
+    animation: neon-flicker 2s infinite alternate;
+}
+
+@keyframes neon-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+            0 0 5px currentColor,
+            0 0 10px currentColor,
+            0 0 15px currentColor,
+            0 0 20px var(--primary),
+            0 0 35px var(--primary),
+            0 0 40px var(--primary);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+/* 3D card flip effect */
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    height: 300px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Morphing shapes */
+.morphing-shape {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    animation: morph 4s ease-in-out infinite;
+}
+
+@keyframes morph {
+    0%, 100% {
+        border-radius: 50%;
+        transform: rotate(0deg);
+    }
+    25% {
+        border-radius: 10px;
+        transform: rotate(90deg);
+    }
+    50% {
+        border-radius: 50%;
+        transform: rotate(180deg);
+    }
+    75% {
+        border-radius: 10px;
+        transform: rotate(270deg);
+    }
+}
+
+/* Liquid button effect */
+.liquid-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.liquid-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.liquid-btn:hover::before {
+    left: 100%;
+}
+
+.liquid-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    transition: all 0.5s;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.liquid-btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Holographic effect */
+.holographic {
+    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5);
+    background-size: 400% 400%;
+    animation: holographic 3s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@keyframes holographic {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Interactive hover zones */
+.hover-zone {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-zone::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(66, 133, 244, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.hover-zone:hover::before {
+    opacity: 1;
+}
+
+/* Staggered text animation */
+.stagger-text {
+    display: inline-block;
+}
+
+.stagger-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: stagger-in 0.6s ease forwards;
+}
+
+.stagger-text span:nth-child(1) { animation-delay: 0.1s; }
+.stagger-text span:nth-child(2) { animation-delay: 0.2s; }
+.stagger-text span:nth-child(3) { animation-delay: 0.3s; }
+.stagger-text span:nth-child(4) { animation-delay: 0.4s; }
+.stagger-text span:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes stagger-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .flip-card {
+        height: 250px;
+    }
+    
+    .morphing-shape {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .glitch {
+        animation-duration: 3s;
+    }
+}
